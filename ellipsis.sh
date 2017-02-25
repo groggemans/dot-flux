@@ -21,6 +21,10 @@ pkg.install(){
 ##############################################################################
 
 pkg.link() {
+    # Link package into ~/.flux
+    mkdir -p "$ELLIPSIS_HOME/.flux"
+    fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/flux"
+
     mkdir -p "$ELLIPSIS_HOME/.config/autostart"
     fs.link_file "$PKG_PATH/flux.desktop" "$ELLIPSIS_HOME/.config/autostart/flux.desktop"
 }
@@ -41,6 +45,7 @@ pkg.pull() {
 
 pkg.unlink() {
     # Remove config autostart link
+    rm "$ELLIPSIS_HOME/.config/flux"
     rm "$ELLIPSIS_HOME/.config/autostart/flux.desktop"
 
     # Remove all links in the home folder
