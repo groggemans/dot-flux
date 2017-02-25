@@ -25,4 +25,4 @@ add_option '-g' "$LONGITUDE"
 add_option '-k' "$COLORTEMP"
 add_option '-r' "$USERANDR"
 
-~/.config/flux/bin/xflux $OPTIONS
+~/.config/flux/bin/xflux $OPTIONS >> /tmp/flux.log
