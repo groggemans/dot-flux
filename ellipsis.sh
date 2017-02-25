@@ -15,27 +15,14 @@ ELLIPSIS_PKG_DEPS=''
 ##############################################################################
 
 pkg.install(){
-    if [ "$ELLIPSIS_INIT" != '1' ]; then
-        log.fail "Unmet dependency 'Ellipsis-init'"
-        return 1
-    fi
+    : # No action
 }
 
 ##############################################################################
 
 pkg.link() {
-    # Link rc file
-    fs.link_file taskrc
-
-    # Link package into ~/.config/task
-    mkdir -p "$ELLIPSIS_HOME/.config"
-    fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/task"
-}
-
-##############################################################################
-
-pkg.init() {
-    . "$PKG_PATH/functions.sh"
+    mkdir -p "$ELLIPSIS_HOME/.config/autostart"
+    fs.link_file "$PKG_PATH/flux.desktop" "$ELLIPSIS_HOME/.config/autostart/flux.desktop"
 }
 
 ##############################################################################
@@ -53,8 +40,8 @@ pkg.pull() {
 ##############################################################################
 
 pkg.unlink() {
-    # Remove config dir
-    rm "$ELLIPSIS_HOME/.config/task"
+    # Remove config autostart link
+    rm "$ELLIPSIS_HOME/.config/autostart/flux.desktop"
 
     # Remove all links in the home folder
     hooks.unlink

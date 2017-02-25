@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=F.LUX
+Comment=F.LUX application
+Exec=~/.config/flux/flux.sh
+StartupNotify=false
+Terminal=false
+Hidden=false
