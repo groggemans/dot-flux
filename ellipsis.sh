@@ -31,6 +31,12 @@ pkg.link() {
 
 ##############################################################################
 
+pkg.init() {
+    env_append_path "$PKG_PATH/bin"
+}
+
+##############################################################################
+
 pkg.pull() {
     # Use improved update strategy
     git remote update 2>&1 > /dev/null

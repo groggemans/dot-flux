@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+xflux -l 51 -g 4.5
