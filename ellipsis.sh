@@ -22,7 +22,7 @@ pkg.install(){
 
 pkg.link() {
     # Link package into ~/.flux
-    mkdir -p "$ELLIPSIS_HOME/.flux"
+    mkdir -p "$ELLIPSIS_HOME/.config"
     fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/flux"
 
     mkdir -p "$ELLIPSIS_HOME/.config/autostart"
@@ -39,7 +39,7 @@ pkg.init() {
 
 pkg.pull() {
     # Use improved update strategy
-    git remote update 2>&1 > /dev/null
+    git remote update > /dev/null 2>&1
     if git.is_behind; then
         pkg.unlink
         git.pull
