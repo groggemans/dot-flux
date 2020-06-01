@@ -24,15 +24,11 @@ pkg.link() {
     # Link package into ~/.flux
     mkdir -p "$ELLIPSIS_HOME/.config"
     fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/flux"
+    fs.link_file "$PKG_PATH/bin/flux" "$ELLIPSIS_HOME/.bin/flux"
+    fs.link_file "$PKG_PATH/bin/xflux" "$ELLIPSIS_HOME/.bin/xflux"
 
     mkdir -p "$ELLIPSIS_HOME/.config/autostart"
     fs.link_file "$PKG_PATH/flux.desktop" "$ELLIPSIS_HOME/.config/autostart/flux.desktop"
-}
-
-##############################################################################
-
-pkg.init() {
-    env_append_path "$PKG_PATH/bin"
 }
 
 ##############################################################################
@@ -53,6 +49,8 @@ pkg.unlink() {
     # Remove config autostart link
     rm "$ELLIPSIS_HOME/.config/flux"
     rm "$ELLIPSIS_HOME/.config/autostart/flux.desktop"
+    rm "$ELLIPSIS_HOME/.bin/flux"
+    rm "$ELLIPSIS_HOME/.bin/xflux"
 
     # Remove all links in the home folder
     hooks.unlink
